@@ -1,0 +1,35 @@
+/* One uninterrupted black canvas beneath the entire portfolio. */
+:root,body{background:#000;color:#f1efe8}
+#root{isolation:isolate}
+.ambient-background{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#000}
+.home-cover,.albums-section,.tracks-section,.visuals-section,.finale-section{background:transparent;color:#f1efe8}
+.home-cover{isolation:isolate}
+.home-cover-image{
+  transform-origin:50% 35%;
+  /* Fully transparent before the image edge: no hard rectangle can reach the next section. */
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,rgba(0,0,0,.95) 52%,rgba(0,0,0,.7) 65%,rgba(0,0,0,.3) 78%,rgba(0,0,0,.06) 89%,transparent 97%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 40%,rgba(0,0,0,.95) 52%,rgba(0,0,0,.7) 65%,rgba(0,0,0,.3) 78%,rgba(0,0,0,.06) 89%,transparent 97%);
+  will-change:transform,opacity;
+}
+.section{padding-top:clamp(110px,13vh,180px);padding-bottom:clamp(110px,16vh,200px)}
+.albums-section{padding-top:50px}
+.heading-reveal{overflow:hidden;padding:10px 0 14px;margin:-10px 0 -14px}
+.section-heading h2,.tracks-intro .section-heading h2{font-size:clamp(48px,6.2vw,106px);font-weight:800;line-height:1.16;letter-spacing:-.05em;transform-origin:0% 100%}
+.section-heading p,.tracks-intro .section-heading p{color:#c8c2be;letter-spacing:4px;font-size:18px;margin-top:20px}
+.section-heading,.visuals-section .section-heading{margin-bottom:64px}
+.album-cover,.video-cover{background:#080808}
+.album-cover img,.video-cover img{position:relative;top:-7%;height:114%;transform:translate3d(0,var(--parallax-y,0%),0);transition:none}
+.album-cover:hover img,.video-cover:hover img{transform:translate3d(0,var(--parallax-y,0%),0);opacity:1}
+.album-cover:focus-visible,.video-cover:focus-visible{outline-color:#fff;outline-offset:7px}
+.album-info h3,.video-info h3{color:#eee9e5}
+.video-grid{row-gap:64px}
+.finale-title{color:#fff}
+.toast{color:#181817}
+::selection{background:#ed3027;color:#fff}
+@media(max-width:700px){
+  .section{padding:95px 0}.albums-section{padding-top:40px}
+  .section-heading h2,.tracks-intro .section-heading h2{font-size:52px}
+  .section-heading,.visuals-section .section-heading{margin-bottom:42px}
+  .video-grid{row-gap:36px}
+}
+@media(prefers-reduced-motion:reduce){.home-cover-image{will-change:auto}}
