@@ -1,0 +1,42 @@
+/* Scroll position controls only vertical movement and opacity. */
+.heading-reveal{overflow:visible}
+.album{width:90%;justify-self:center}
+.album-cover{transition:transform .65s cubic-bezier(.22,1,.36,1);transform-origin:50% 65%;overflow:hidden}
+.album-cover:hover,.album-cover:focus-visible{transform:translateY(-9px) scale(1.04)}
+.album-cover img,.album-cover:hover img{top:0;height:100%;transform:none;scale:1}
+.video-card{width:95%;justify-self:center;min-width:0}
+.track-credits{display:block;line-height:1.7;letter-spacing:.3px!important}
+.track-progress input{cursor:pointer}
+.finale-labels{position:absolute;top:16%;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 4vw;font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(18px,2vw,30px);letter-spacing:4px}
+.inline-video-slot{position:relative;width:100%;aspect-ratio:16/10;background:#000}
+.inline-video-stage{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden;transform-origin:0 0}
+.inline-video-stage[open]{display:block}
+.inline-video-stage:modal{position:fixed;inset:0;width:70vw;height:70vh;max-width:1700px;margin:auto;overflow:visible}
+.inline-video-stage::backdrop{background:rgba(0,0,0,.78);backdrop-filter:blur(5px)}
+.inline-video-stage.is-closing::backdrop{background:rgba(0,0,0,.25);backdrop-filter:none}
+.inline-video-stage video{display:block;width:100%;height:100%;object-fit:contain;cursor:pointer;background:#000}
+.inline-video-controls{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;gap:6px;padding:23px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.8));z-index:2}
+.inline-video-controls button{border:0;background:transparent;color:white;width:34px;height:34px;padding:7px;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.inline-video-controls button:hover,.inline-video-controls button:focus-visible{background:#ffffff22}
+.volume-control{margin-left:auto;position:relative}
+.volume-slider{position:absolute;bottom:100%;left:0;width:34px;height:125px;padding:12px 8px 15px;background:#111e;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .2s,transform .2s,visibility .2s}
+.volume-control:hover .volume-slider,.volume-control:focus-within .volume-slider{opacity:1;visibility:visible;transform:translateY(0)}
+.volume-slider input{writing-mode:vertical-lr;direction:rtl;width:18px;height:98px;accent-color:#ed3027;cursor:pointer;margin:0}
+.inline-video-error{position:absolute;inset:35% 10% auto;text-align:center;color:#fff;font-size:13px;background:#000b;padding:12px;pointer-events:none}
+@media(max-width:700px){.inline-video-stage:modal{width:92vw;height:70svh}.track-credits{font-size:8px!important}.finale-labels{top:18%}.album{width:90%}.video-card{width:95%}}
+@media(prefers-reduced-motion:reduce){.album-cover{transition:none}}
+/* Revision: compact translucent album detail, clear credits and true 4:3 players. */
+.media-dialog{width:fit-content;max-width:90vw;background:rgba(241,239,232,.7)}
+.album-dialog-content{grid-template-columns:minmax(0,407px) max-content;gap:28px}
+.album-dialog-content .solid-link{margin-top:0;white-space:nowrap}
+.track-title>.track-credits{font-size:12px;line-height:1.7}
+.video-card{width:79.166667%}
+.inline-video-slot{aspect-ratio:4/3}
+.video-seek-clip{position:absolute;bottom:0;left:0;right:0;height:23px;overflow:hidden;pointer-events:none;z-index:4}
+.video-seek-bar{height:100%;padding:1px 12px;background:linear-gradient(transparent,#000a);transform:translateY(110%);opacity:0;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s;visibility:hidden}
+.seek-visible .video-seek-bar{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
+.video-seek-bar input{display:block;width:100%;height:18px;margin:0;accent-color:#ed3027;cursor:pointer;touch-action:none}
+.inline-video-controls{padding-bottom:20px}
+@media(max-width:700px){.album-dialog-content{grid-template-columns:1fr;justify-items:center;gap:24px}.track-title>.track-credits{font-size:11px!important}.video-card{width:79.166667%}}
+.video-seek-bar{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s,visibility 0s .35s}
+.seek-visible .video-seek-bar{transition-delay:0s}
